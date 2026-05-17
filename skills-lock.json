@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "vue-component-patterns": {
+      "source": "thebushidocollective/han",
+      "sourceType": "github",
+      "skillPath": "plugins/frameworks/vue/skills/vue-component-patterns/SKILL.md",
+      "computedHash": "d42783786e9bce6267b367c4a0a6c3b7bab861fde43580361a077756556754a1"
+    },
+    "vue-composition-api": {
+      "source": "thebushidocollective/han",
+      "sourceType": "github",
+      "skillPath": "plugins/frameworks/vue/skills/vue-composition-api/SKILL.md",
+      "computedHash": "3dfd9fa798e55c07f691162b0ba7bfc2fa6f3d07f35ee44feeda91f85ac7a8a2"
+    },
+    "vue-expert": {
+      "source": "jeffallan/claude-skills",
+      "sourceType": "github",
+      "skillPath": "skills/vue-expert/SKILL.md",
+      "computedHash": "7276996f25e0e22316d480d12a51ea8f7441cc9855e79590ed0f5e2a25da4714"
+    }
+  }
+}
