@@ -61,3 +61,5 @@ export declare interface ToastContainerOptions
   extends BaseToastContainerOptions {
   defaultToastProps?: BaseToastOptions
 }
+
+export type ToastContainerProps = ToastContainerOptions

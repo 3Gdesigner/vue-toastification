@@ -57,8 +57,8 @@ describe("EventBus", () => {
 
     expect(handler1).toHaveBeenCalledTimes(1)
     expect(handler2).toHaveBeenCalledTimes(1)
-    expect(handler1).toBeCalledWith(1)
-    expect(handler2).toBeCalledWith(1)
+    expect(handler1).toHaveBeenCalledWith(1)
+    expect(handler2).toHaveBeenCalledWith(1)
   })
 })
 

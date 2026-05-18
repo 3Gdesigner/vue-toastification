@@ -30,24 +30,11 @@ import {
 
 import type { ToastID } from "../types/common"
 import type { ToastOptionsAndContent } from "../types/toast"
-import type { ToastContainerOptions } from "../types/toastContainer"
+import type { ToastContainerOptions, ToastContainerProps } from "../types/toastContainer"
 
 import Toast from "./VtToast.vue"
 import VtTransition from "./VtTransition.vue"
 
-interface ToastContainerProps {
-  position?: ToastContainerOptions["position"]
-  container?: ToastContainerOptions["container"]
-  containerClassName?: ToastContainerOptions["containerClassName"]
-  defaultToastProps?: ToastContainerOptions["defaultToastProps"]
-  eventBus?: ToastContainerOptions["eventBus"]
-  filterBeforeCreate?: ToastContainerOptions["filterBeforeCreate"]
-  filterToasts?: ToastContainerOptions["filterToasts"]
-  maxToasts?: ToastContainerOptions["maxToasts"]
-  newestOnTop?: ToastContainerOptions["newestOnTop"]
-  toastDefaults?: ToastContainerOptions["toastDefaults"]
-  transition?: ToastContainerOptions["transition"]
-}
 
 const props = withDefaults(defineProps<ToastContainerProps>(), {
   position: TOAST_CONTAINER_DEFAULTS.position,

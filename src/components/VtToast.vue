@@ -105,9 +105,10 @@ const { hovering } = useHoverable(el, props)
 const { focused } = useFocusable(el, props)
 const { beingDragged, dragComplete } = useDraggable(el, props)
 
-const isRunning = computed(
-  () => !hovering.value && focused.value && !beingDragged.value
+const isPaused = computed(
+  () => hovering.value || !focused.value || beingDragged.value
 )
+const isRunning = computed(() => !isPaused.value)
 
 const closeToast = () => {
   props.eventBus.emit(EVENTS.DISMISS, props.id)

@@ -1,7 +1,7 @@
 module.exports = {
   preset: "ts-jest",
   clearMocks: true,
-  testEnvironment: "jsdom",
+  testEnvironment: "./tests/utils/jsdomEnvironment.js",
   transform: {
     "^.+\\.vue$": "@vue/vue3-jest",
     "^.+\\.(css|less|scss)$": "./tests/utils/styleMock.js",

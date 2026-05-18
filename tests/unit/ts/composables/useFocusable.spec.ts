@@ -41,7 +41,7 @@ describe("useFocusable", () => {
     const retuned = useFocusable(el, props)
 
     // not-used-in-setup warnings
-    expect(consoleSpy).toBeCalledTimes(2)
+    expect(consoleSpy).toHaveBeenCalledTimes(2)
 
     expect(retuned.focused.value).toBe(true)
   })

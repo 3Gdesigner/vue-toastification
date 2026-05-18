@@ -1,4 +1,6 @@
 // Bounce Animation taken from https://github.com/fkhadra/react-toastify
+@use "../variables" as *;
+
 $trans-cubic-bezier: cubic-bezier(0.215, 0.61, 0.355, 1);
 @mixin timing-function {
   animation-timing-function: $trans-cubic-bezier;
@@ -32,6 +34,10 @@ $trans-cubic-bezier: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 @keyframes bounceOutRight {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
   40% {
     opacity: 1;
     transform: translate3d(-20px, 0, 0);
@@ -70,6 +76,10 @@ $trans-cubic-bezier: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 @keyframes bounceOutLeft {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
   20% {
     opacity: 1;
     transform: translate3d(20px, 0, 0);
@@ -108,6 +118,10 @@ $trans-cubic-bezier: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 @keyframes bounceOutUp {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
   20% {
     transform: translate3d(0, -10px, 0);
   }
@@ -150,6 +164,10 @@ $trans-cubic-bezier: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 @keyframes bounceOutDown {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
   20% {
     transform: translate3d(0, 10px, 0);
   }

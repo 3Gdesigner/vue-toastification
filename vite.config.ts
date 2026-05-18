@@ -31,8 +31,8 @@ const libConfig = defineConfig({
         },
         // Use `index.css` for css
         assetFileNames: assetInfo => {
-          if (assetInfo.name == "style.css") return "index.css"
-          return assetInfo.name
+          if (assetInfo.name?.endsWith(".css")) return "index.css"
+          return assetInfo.name ?? ""
         },
       },
     },

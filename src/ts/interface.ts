@@ -143,11 +143,13 @@ function mountPlugin(options: PluginOptions) {
 
   if (shareAppContext && shareAppContext !== true) {
     const userApp = shareAppContext
-    app._context.components = userApp._context.components
-    app._context.directives = userApp._context.directives
-    app._context.mixins = userApp._context.mixins
-    app._context.provides = userApp._context.provides
-    app.config.globalProperties = userApp.config.globalProperties
+    // Vue 3 has no public API to enumerate all registered components/directives,
+    // so _context is the only available mechanism for sharing app context.
+    Object.assign(app._context.components, userApp._context.components)
+    Object.assign(app._context.directives, userApp._context.directives)
+    userApp._context.mixins.forEach((m: object) => app.mixin(m))
+    Object.assign(app._context.provides, userApp._context.provides)
+    Object.assign(app.config.globalProperties, userApp.config.globalProperties)
   }
 
   const component = app.mount(document.createElement("div"))

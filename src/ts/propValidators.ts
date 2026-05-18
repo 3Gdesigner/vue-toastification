@@ -10,8 +10,6 @@ import { EventBus } from "./eventBus"
 const defaultEventBus = /* istanbul ignore next */ () => new EventBus()
 const emptyFunction = /* istanbul ignore next */ () => {}
 
-// This wraps a method to be returned as a factory function
-const asFactory = <T>(f: T) => (() => f) as unknown as T
 
 export const TOAST_DEFAULTS: Required<InferDefaults<Readonly<ToastOptions>>> = {
   id: 0,
@@ -47,8 +45,8 @@ export const TOAST_CONTAINER_DEFAULTS: Required<
   container: () => document.body,
   containerClassName: () => [],
   eventBus: defaultEventBus,
-  filterBeforeCreate: asFactory(toast => toast),
-  filterToasts: asFactory(toasts => toasts),
+  filterBeforeCreate: (toast => toast) as NonNullable<ToastContainerOptions["filterBeforeCreate"]>,
+  filterToasts: (toasts => toasts) as NonNullable<ToastContainerOptions["filterToasts"]>,
   maxToasts: 20,
   newestOnTop: true,
   toastDefaults: () => ({}),

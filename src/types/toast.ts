@@ -1,4 +1,4 @@
-import type { Component } from "vue"
+import type { Component, VNode } from "vue"
 
 import type { TYPE, POSITION } from "../ts/constants"
 import type {
@@ -135,7 +135,7 @@ export declare interface ToastComponent {
 
 export declare type ToastContent =
   | RenderableToastContent
-  | JSX.Element
+  | VNode
   | ToastComponent
 
 export declare type ToastOptionsAndContent = ToastOptions & {

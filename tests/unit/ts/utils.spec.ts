@@ -1,5 +1,5 @@
 /* eslint-disable vue/one-component-per-file */
-import { defineComponent, h, isProxy, isRef, reactive, ref } from "vue"
+import { defineComponent, h, isProxy, isRef, reactive, ref, VNode } from "vue"
 
 import {
   getId,
@@ -131,7 +131,7 @@ describe("isToastContent", () => {
     ).toBe(true)
   })
   it("is jsx", () => {
-    const jsx = { tag: "div" } as unknown as JSX.Element
+    const jsx = { tag: "div" } as unknown as VNode
     expect(isToastContent(jsx)).toBe(true)
   })
   it("is toast component", () => {
@@ -177,8 +177,8 @@ describe("getVueComponentFromObj", () => {
     expect(getVueComponentFromObj(component)).toBe(component)
   })
   it("get jsx with render", () => {
-    const jsx = { tag: "div" } as unknown as JSX.Element
-    const vueComp = getVueComponentFromObj(jsx) as { render(): JSX.Element }
+    const jsx = { tag: "div" } as unknown as VNode
+    const vueComp = getVueComponentFromObj(jsx) as { render(): VNode }
     expect(vueComp.render()).toBe(jsx)
   })
   it("get toast component", () => {

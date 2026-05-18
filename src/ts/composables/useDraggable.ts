@@ -31,6 +31,7 @@ export const useDraggable = (
     beingDragged.value ? dragPos.value.x - dragStart.value : 0
   )
   const dragComplete = ref(false)
+  let snapBackTimer: ReturnType<typeof setTimeout> | undefined
 
   // Computed state
   const removalDistance = computed(() =>
@@ -80,7 +81,7 @@ export const useDraggable = (
       if (Math.abs(dragDelta.value) >= removalDistance.value) {
         dragComplete.value = true
       } else {
-        setTimeout(() => {
+        snapBackTimer = setTimeout(() => {
           beingDragged.value = false
         })
       }
@@ -100,6 +101,7 @@ export const useDraggable = (
     }
   })
   onBeforeUnmount(() => {
+    clearTimeout(snapBackTimer)
     /* istanbul ignore else  */
     if (draggable.value && el.value) {
       el.value.removeEventListener("touchstart", onDragStart)

@@ -41,7 +41,7 @@ describe("useHoverable", () => {
     const retuned = useHoverable(el, props)
 
     // not-used-in-setup warnings
-    expect(consoleSpy).toBeCalledTimes(2)
+    expect(consoleSpy).toHaveBeenCalledTimes(2)
 
     expect(retuned.hovering.value).toBe(false)
   })

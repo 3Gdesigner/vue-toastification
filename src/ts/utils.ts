@@ -1,4 +1,4 @@
-import { Component, defineComponent, toRaw, unref } from "vue"
+import { Component, defineComponent, toRaw, unref, VNode } from "vue"
 
 import type { BasePluginOptions } from "../types/plugin"
 import type {
@@ -29,7 +29,7 @@ const isUndefined = (value: unknown): value is undefined =>
 const isObject = (value: unknown): value is DictionaryLike =>
   typeof value === "object" && value !== null
 
-const isJSX = (obj: unknown): obj is JSX.Element =>
+const isJSX = (obj: unknown): obj is VNode =>
   hasProp(obj, "tag") && isNonEmptyString(obj.tag)
 
 const isTouchEvent = (event: Event): event is TouchEvent =>

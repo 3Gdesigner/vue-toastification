@@ -13,7 +13,9 @@ import { isBrowser } from "../utils"
 import type { PluginOptions } from "../../types/plugin"
 import type { ToastInterface } from "../interface"
 
-import { createToastInstance as ownExports_createToastInstance } from "./useToast"
+// Namespace import so jest.spyOn(composables, 'createToastInstance') intercepts
+// internal calls made by provideToast and useToast during tests.
+import * as composables from "./useToast"
 
 const toastInjectionKey: InjectionKey<ToastInterface> =
   Symbol("VueToastification")
@@ -28,7 +30,7 @@ interface CreateToastInstance {
    */
   (eventBus: EventBusInterface): ToastInterface
   /**
-   * Creats a new instance of Vue Toastification
+   * Creates a new instance of Vue Toastification
    */
   (options?: PluginOptions): ToastInterface
 }
@@ -56,19 +58,19 @@ const createToastInstance: CreateToastInstance = optionsOrEventBus => {
 
 const provideToast = (options?: PluginOptions) => {
   if (getCurrentInstance()) {
-    const toast = ownExports_createToastInstance(options)
+    const toast = composables.createToastInstance(options)
     provide(toastInjectionKey, toast)
   }
 }
 
 const useToast = (eventBus?: EventBus) => {
   if (eventBus) {
-    return ownExports_createToastInstance(eventBus)
+    return composables.createToastInstance(eventBus)
   }
   const toast = getCurrentInstance()
     ? inject(toastInjectionKey, undefined)
     : undefined
-  return toast ? toast : ownExports_createToastInstance(globalEventBus)
+  return toast ? toast : composables.createToastInstance(globalEventBus)
 }
 
 export { useToast, provideToast, toastInjectionKey, createToastInstance }

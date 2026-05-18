@@ -1,4 +1,4 @@
-import type { Component } from "vue"
+import type { Component, VNode } from "vue"
 
 import type { EventBusInterface } from "../ts/eventBus"
 
@@ -51,10 +51,10 @@ export declare type Icon =
       iconClass?: string
     }
   | Component
-  | JSX.Element
+  | VNode
 
 export declare type Button =
   | false
   | keyof HTMLElementTagNameMap
   | Component
-  | JSX.Element
+  | VNode
