@@ -1,8 +1,5 @@
-/* eslint-disable vue/one-component-per-file */
 import * as vue from "vue"
 import { App, nextTick } from "vue"
-
-import { isFunction } from "@vue/shared"
 
 import VtToastContainer from "../../../src/components/VtToastContainer.vue"
 import { EventBus } from "../../../src/index"
@@ -23,11 +20,14 @@ describe("interface", () => {
 
     beforeEach(() => {
       eventBus = new EventBus()
-      eventsEmmited = Object.values(EVENTS).reduce((agg, eventName) => {
-        const handler = jest.fn()
-        eventBus.on(eventName, handler)
-        return { ...agg, [eventName]: handler }
-      }, {} as { [eventName in EVENTS]: jest.Mock })
+      eventsEmmited = Object.values(EVENTS).reduce(
+        (agg, eventName) => {
+          const handler = jest.fn()
+          eventBus.on(eventName, handler)
+          return { ...agg, [eventName]: handler }
+        },
+        {} as { [eventName in EVENTS]: jest.Mock },
+      )
     })
 
     it("creates valid interface by default", async () => {
@@ -36,15 +36,15 @@ describe("interface", () => {
       const toast = buildInterface()
       await nextTick()
 
-      expect(isFunction(toast)).toBe(true)
-      expect(isFunction(toast.info)).toBe(true)
-      expect(isFunction(toast.success)).toBe(true)
-      expect(isFunction(toast.warning)).toBe(true)
-      expect(isFunction(toast.error)).toBe(true)
-      expect(isFunction(toast.dismiss)).toBe(true)
-      expect(isFunction(toast.clear)).toBe(true)
-      expect(isFunction(toast.update)).toBe(true)
-      expect(isFunction(toast.updateDefaults)).toBe(true)
+      expect(typeof toast).toBe("function")
+      expect(typeof toast.info).toBe("function")
+      expect(typeof toast.success).toBe("function")
+      expect(typeof toast.warning).toBe("function")
+      expect(typeof toast.error).toBe("function")
+      expect(typeof toast.dismiss).toBe("function")
+      expect(typeof toast.clear).toBe("function")
+      expect(typeof toast.update).toBe("function")
+      expect(typeof toast.updateDefaults).toBe("function")
     })
 
     it("uses provided eventBus", async () => {
@@ -89,7 +89,7 @@ describe("interface", () => {
         VtToastContainer,
         expect.objectContaining({
           eventBus: expect.any(EventBus),
-        })
+        }),
       )
       expect(mockApp.mount).toHaveBeenCalled()
     })
@@ -156,7 +156,7 @@ describe("interface", () => {
       expect(mockApp._context.mixins).toBe(userApp._context.mixins)
       expect(mockApp._context.provides).toBe(userApp._context.provides)
       expect(mockApp.config.globalProperties).toBe(
-        userApp.config.globalProperties
+        userApp.config.globalProperties,
       )
     })
   })

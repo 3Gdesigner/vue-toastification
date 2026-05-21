@@ -14,21 +14,21 @@ import type { Draggable } from "../../types/common"
 
 export const useDraggable = (
   el: Ref<HTMLElement | undefined>,
-  props: Required<Draggable>
+  props: Required<Draggable>,
 ) => {
   // Extract used props
   const { draggablePercent, draggable } = toRefs(props)
 
   // Define state
   const dragRect = computed(() =>
-    el.value ? el.value.getBoundingClientRect() : undefined
+    el.value ? el.value.getBoundingClientRect() : undefined,
   )
   const dragStarted = ref(false)
   const beingDragged = ref(false)
   const dragPos = ref({ x: 0, y: 0 })
   const dragStart = ref(0)
   const dragDelta = computed(() =>
-    beingDragged.value ? dragPos.value.x - dragStart.value : 0
+    beingDragged.value ? dragPos.value.x - dragStart.value : 0,
   )
   const dragComplete = ref(false)
   let snapBackTimer: ReturnType<typeof setTimeout> | undefined
@@ -37,7 +37,7 @@ export const useDraggable = (
   const removalDistance = computed(() =>
     isDOMRect(dragRect.value)
       ? (dragRect.value.right - dragRect.value.left) * draggablePercent.value
-      : 0
+      : 0,
   )
 
   // Update style to match drag
@@ -59,7 +59,7 @@ export const useDraggable = (
           el.value.style.transition = "transform 0.2s, opacity 0.2s"
         }
       }
-    }
+    },
   )
 
   // Define handlers

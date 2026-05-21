@@ -1,6 +1,5 @@
 import type { Component, VNode } from "vue"
 
-import type { TYPE, POSITION } from "../ts/constants"
 import type {
   Button,
   ClassNames,
@@ -11,12 +10,10 @@ import type {
   Icon,
   ToastID,
 } from "./common"
+import type { TYPE, POSITION } from "../ts/constants"
 
 export declare interface BaseToastOptions
-  extends EventBusable,
-    Draggable,
-    Hoverable,
-    Focusable {
+  extends EventBusable, Draggable, Hoverable, Focusable {
   /**
    *  Position of the toast on the screen.
    *
@@ -105,7 +102,7 @@ export declare interface ToastOptions extends BaseToastOptions {
    *
    *  A closeToast callback is passed as argument to onClick when it is called.
    */
-  // eslint-disable-next-line @typescript-eslint/ban-types
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   onClick?: (closeToast: Function) => void
   /**
    * 	Callback executed when the toast is closed.
@@ -129,7 +126,7 @@ export declare interface ToastComponent {
   /**
    * `eventName: eventHandler` pairs of events that the component can emit.
    */
-  // eslint-disable-next-line @typescript-eslint/ban-types
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   listeners?: { [listenerEvent: string]: Function }
 }
 

@@ -107,7 +107,7 @@ describe("VtProgressBar", () => {
     const wrapper = mount(VtProgressBar)
     const spyRemoveEventListener = jest.spyOn(
       wrapper.vm.$el,
-      "removeEventListener"
+      "removeEventListener",
     )
     expect(spyRemoveEventListener).not.toHaveBeenCalled()
     wrapper.unmount()

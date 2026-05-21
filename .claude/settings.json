@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn remove *)",
+      "Bash(bun add *)",
+      "Bash(NODE_ENV=production yarn lint:eslint --fix)",
+      "Bash(bun run *)"
+    ]
+  }
+}

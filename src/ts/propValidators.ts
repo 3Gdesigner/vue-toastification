@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import { InferDefaults } from "../types/vue-helper"
 
 import type { ToastOptions } from "../types/toast"
@@ -9,7 +8,6 @@ import { EventBus } from "./eventBus"
 
 const defaultEventBus = /* istanbul ignore next */ () => new EventBus()
 const emptyFunction = /* istanbul ignore next */ () => {}
-
 
 export const TOAST_DEFAULTS: Required<InferDefaults<Readonly<ToastOptions>>> = {
   id: 0,
@@ -45,8 +43,12 @@ export const TOAST_CONTAINER_DEFAULTS: Required<
   container: () => document.body,
   containerClassName: () => [],
   eventBus: defaultEventBus,
-  filterBeforeCreate: (toast => toast) as NonNullable<ToastContainerOptions["filterBeforeCreate"]>,
-  filterToasts: (toasts => toasts) as NonNullable<ToastContainerOptions["filterToasts"]>,
+  filterBeforeCreate: (toast => toast) as NonNullable<
+    ToastContainerOptions["filterBeforeCreate"]
+  >,
+  filterToasts: (toasts => toasts) as NonNullable<
+    ToastContainerOptions["filterToasts"]
+  >,
   maxToasts: 20,
   newestOnTop: true,
   toastDefaults: () => ({}),

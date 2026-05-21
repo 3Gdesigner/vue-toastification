@@ -7,7 +7,7 @@ import { globalEventBus } from "./eventBus"
 
 export const VueToastificationPlugin: Plugin = (
   App,
-  options?: PluginOptions
+  options?: PluginOptions,
 ) => {
   if (options?.shareAppContext === true) {
     options.shareAppContext = App

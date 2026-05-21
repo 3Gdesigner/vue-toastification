@@ -2,7 +2,9 @@
   <div ref="el" :class="classes" @click="clickHandler">
     <Icon v-if="icon" :custom-icon="icon" :type="type" />
     <div :role="accessibility.toastRole || 'alert'" :class="bodyClasses">
-      <template v-if="typeof content === 'string'">{{ content }}</template>
+      <template v-if="typeof content === 'string'">
+        {{ content }}
+      </template>
       <component
         :is="getVueComponentFromObj(content)"
         v-else
@@ -85,9 +87,9 @@ const props = withDefaults(defineProps<ToastProps>(), {
   eventBus: TOAST_DEFAULTS.eventBus,
   hideProgressBar: TOAST_DEFAULTS.hideProgressBar,
   icon: TOAST_DEFAULTS.icon,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+
   onClick: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+
   onClose: () => {},
   pauseOnFocusLoss: TOAST_DEFAULTS.pauseOnFocusLoss,
   pauseOnHover: TOAST_DEFAULTS.pauseOnHover,
@@ -106,7 +108,7 @@ const { focused } = useFocusable(el, props)
 const { beingDragged, dragComplete } = useDraggable(el, props)
 
 const isPaused = computed(
-  () => hovering.value || !focused.value || beingDragged.value
+  () => hovering.value || !focused.value || beingDragged.value,
 )
 const isRunning = computed(() => !isPaused.value)
 
@@ -149,6 +151,6 @@ const bodyClasses = computed(() =>
     `${VT_NAMESPACE}__toast-${
       isString(props.content) ? "body" : "component-body"
     }`,
-  ].concat(props.bodyClassName)
+  ].concat(props.bodyClassName),
 )
 </script>

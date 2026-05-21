@@ -111,7 +111,7 @@ describe("VtIcon", () => {
       })
       expect(wrapper.findComponent(Simple).exists()).toBeTruthy()
       expect(wrapper.findComponent(Simple).classes()).toContain(
-        `${VT_NAMESPACE}__icon`
+        `${VT_NAMESPACE}__icon`,
       )
       expect(wrapper.element).toMatchSnapshot()
     })

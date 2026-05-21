@@ -1,7 +1,7 @@
 <template>
-  <component :is="component" :class="iconClasses">{{
-    customIconChildren
-  }}</component>
+  <component :is="component" :class="iconClasses">
+    {{ customIconChildren }}
+  </component>
 </template>
 
 <script lang="ts" setup>

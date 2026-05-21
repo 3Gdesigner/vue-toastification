@@ -4,7 +4,7 @@ import type { Hoverable } from "../../types/common"
 
 export const useHoverable = (
   el: Ref<HTMLElement | undefined>,
-  props: Required<Hoverable>
+  props: Required<Hoverable>,
 ) => {
   const { pauseOnHover } = toRefs(props)
   const hovering = ref(false)

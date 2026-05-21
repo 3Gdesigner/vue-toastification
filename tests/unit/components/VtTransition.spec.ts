@@ -72,7 +72,7 @@ describe("VtTransition", () => {
     const events = transition.emitted("leave")
 
     expect(events).toBeTruthy()
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
     expect(events![0]).toEqual([el, done])
   })
   it("leave not HTMLElement", () => {
@@ -93,7 +93,7 @@ describe("VtTransition", () => {
     const events = transition.emitted("leave")
 
     expect(events).toBeTruthy()
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
     expect(events![0]).toEqual([el, done])
   })
 })

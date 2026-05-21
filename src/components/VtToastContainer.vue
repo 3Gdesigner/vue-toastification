@@ -30,11 +30,13 @@ import {
 
 import type { ToastID } from "../types/common"
 import type { ToastOptionsAndContent } from "../types/toast"
-import type { ToastContainerOptions, ToastContainerProps } from "../types/toastContainer"
+import type {
+  ToastContainerOptions,
+  ToastContainerProps,
+} from "../types/toastContainer"
 
 import Toast from "./VtToast.vue"
 import VtTransition from "./VtTransition.vue"
-
 
 const props = withDefaults(defineProps<ToastContainerProps>(), {
   position: TOAST_CONTAINER_DEFAULTS.position,
@@ -51,13 +53,13 @@ const props = withDefaults(defineProps<ToastContainerProps>(), {
 })
 
 const positions = Object.values(POSITION)
-const asPositionRecord = <T>(getValues: (position: POSITION) => T) =>
+const asPositionRecord = <T,>(getValues: (position: POSITION) => T) =>
   positions.reduce(
     (agg, position) => ({
       ...agg,
       [position]: getValues(position),
     }),
-    {} as Record<POSITION, T>
+    {} as Record<POSITION, T>,
   )
 
 const el = ref<HTMLElement>()
@@ -88,7 +90,7 @@ const filteredToasts = computed(() => {
 })
 
 const setup = async (
-  container: NonNullable<ToastContainerOptions["container"]>
+  container: NonNullable<ToastContainerOptions["container"]>,
 ) => {
   if (isFunction(container)) {
     container = await container()
@@ -121,7 +123,9 @@ const addToast = (toastProps: ToastOptionsAndContent) => {
   >
 
   toast = filterBeforeCreate(toast, toastArray.value)
-  toast && setToast(toast)
+  if (toast) {
+    setToast(toast)
+  }
 }
 
 const dismissToast: ToastInterface["dismiss"] = id => {
@@ -175,7 +179,7 @@ const toastClasses = computed(() => {
   const getClasses = (position: POSITION) => {
     const classes = [`${VT_NAMESPACE}__container`, position]
     return classes.concat(
-      containerProps.value.containerClassName as string | string[]
+      containerProps.value.containerClassName as string | string[],
     )
   }
   return asPositionRecord(getClasses)

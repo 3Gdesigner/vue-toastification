@@ -78,7 +78,7 @@ interface UpdateToast {
   (
     toastID: ToastID,
     update: { content?: ToastContent; options?: ToastOptions },
-    create?: false
+    create?: false,
   ): void
   /**
    * @param toastID ID of the toast to create / update
@@ -89,7 +89,7 @@ interface UpdateToast {
   (
     toastID: ToastID,
     update: { content: ToastContent; options?: ToastOptions },
-    create: true
+    create: true,
   ): void
 }
 
@@ -161,7 +161,7 @@ function mountPlugin(options: PluginOptions) {
 
 const createInterface = (events: EventBusInterface): ToastInterface => {
   const createToastMethod = <T extends TYPE = TYPE>(
-    type: T
+    type: T,
   ): ToastMethod<T> => {
     const method: ToastMethod<T> = (content, options) => {
       const props: ToastOptionsAndContent & {
@@ -200,7 +200,7 @@ const createInterface = (events: EventBusInterface): ToastInterface => {
 
 export const buildInterface = (
   globalOptions: PluginOptions = {},
-  mountContainer = true
+  mountContainer = true,
 ): ToastInterface => {
   const options = { ...globalOptions }
   const events = (options.eventBus = options.eventBus || new EventBus())

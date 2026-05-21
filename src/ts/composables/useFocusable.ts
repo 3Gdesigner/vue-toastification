@@ -4,7 +4,7 @@ import type { Focusable } from "../../types/common"
 
 export const useFocusable = (
   el: Ref<HTMLElement | undefined>,
-  props: Required<Focusable>
+  props: Required<Focusable>,
 ) => {
   const { pauseOnFocusLoss } = toRefs(props)
   const focused = ref(true)

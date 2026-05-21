@@ -127,7 +127,7 @@ describe("isToastContent", () => {
         render() {
           return h("div")
         },
-      })
+      }),
     ).toBe(true)
   })
   it("is jsx", () => {
@@ -253,27 +253,27 @@ describe("isDOMRect", () => {
         right: 10,
         top: 10,
         bottom: 10,
-      })
+      }),
     ).toBe(true)
   })
   it("missing prop", () => {
     expect(
-      isDOMRect({ width: 10, height: 10, left: 10, top: 10, bottom: 10 })
+      isDOMRect({ width: 10, height: 10, left: 10, top: 10, bottom: 10 }),
     ).toBe(false)
     expect(
-      isDOMRect({ width: 10, height: 10, right: 10, top: 10, bottom: 10 })
+      isDOMRect({ width: 10, height: 10, right: 10, top: 10, bottom: 10 }),
     ).toBe(false)
     expect(
-      isDOMRect({ width: 10, left: 10, right: 10, top: 10, bottom: 10 })
+      isDOMRect({ width: 10, left: 10, right: 10, top: 10, bottom: 10 }),
     ).toBe(false)
     expect(
-      isDOMRect({ height: 10, left: 10, right: 10, top: 10, bottom: 10 })
+      isDOMRect({ height: 10, left: 10, right: 10, top: 10, bottom: 10 }),
     ).toBe(false)
     expect(
-      isDOMRect({ width: 10, height: 10, left: 10, right: 10, top: 10 })
+      isDOMRect({ width: 10, height: 10, left: 10, right: 10, top: 10 }),
     ).toBe(false)
     expect(
-      isDOMRect({ width: 10, height: 10, left: 10, right: 10, bottom: 10 })
+      isDOMRect({ width: 10, height: 10, left: 10, right: 10, bottom: 10 }),
     ).toBe(false)
   })
   it("prop wrong type", () => {
@@ -285,7 +285,7 @@ describe("isDOMRect", () => {
         right: 10,
         top: 10,
         bottom: "abc",
-      })
+      }),
     ).toBe(false)
     expect(
       isDOMRect({
@@ -295,7 +295,7 @@ describe("isDOMRect", () => {
         right: 10,
         top: "abc",
         bottom: 10,
-      })
+      }),
     ).toBe(false)
     expect(
       isDOMRect({
@@ -305,7 +305,7 @@ describe("isDOMRect", () => {
         right: "abc",
         top: 10,
         bottom: 10,
-      })
+      }),
     ).toBe(false)
     expect(
       isDOMRect({
@@ -315,7 +315,7 @@ describe("isDOMRect", () => {
         right: 10,
         top: 10,
         bottom: 10,
-      })
+      }),
     ).toBe(false)
     expect(
       isDOMRect({
@@ -325,7 +325,7 @@ describe("isDOMRect", () => {
         right: 10,
         top: 10,
         bottom: 10,
-      })
+      }),
     ).toBe(false)
     expect(
       isDOMRect({
@@ -335,7 +335,7 @@ describe("isDOMRect", () => {
         right: 10,
         top: 10,
         bottom: 10,
-      })
+      }),
     ).toBe(false)
   })
   it("not an object", () => {

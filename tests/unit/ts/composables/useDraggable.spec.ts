@@ -1,5 +1,3 @@
-/* eslint-disable vue/one-component-per-file */
-
 import {
   computed,
   defineComponent,
@@ -115,7 +113,7 @@ describe("useDraggable", () => {
     expect(inner.text()).toEqual(inactiveText)
 
     outer.element.dispatchEvent(
-      new window.MouseEvent("mousedown", { ...startPos })
+      new window.MouseEvent("mousedown", { ...startPos }),
     )
     await nextTick()
 
@@ -125,7 +123,7 @@ describe("useDraggable", () => {
       new window.MouseEvent("mousemove", {
         clientX: startPos.clientX + getDragDistance(0.6),
         clientY: startPos.clientY,
-      })
+      }),
     )
     await nextTick()
     expect(inner.text()).toEqual(inactiveText)
@@ -141,7 +139,7 @@ describe("useDraggable", () => {
     expect(inner.text()).toEqual(inactiveText)
 
     outer.element.dispatchEvent(
-      new window.MouseEvent("mousedown", { ...startPos })
+      new window.MouseEvent("mousedown", { ...startPos }),
     )
     await nextTick()
 
@@ -153,7 +151,7 @@ describe("useDraggable", () => {
       new window.MouseEvent("mousemove", {
         clientX: startPos.clientX + dragDistance,
         clientY: startPos.clientY,
-      })
+      }),
     )
     await nextTick()
     expect(inner.text()).toEqual(activeText)
@@ -175,7 +173,7 @@ describe("useDraggable", () => {
     expect(inner.text()).toEqual(inactiveText)
 
     outer.element.dispatchEvent(
-      new window.MouseEvent("touchstart", { ...startPos })
+      new window.MouseEvent("touchstart", { ...startPos }),
     )
     await nextTick()
 
@@ -187,7 +185,7 @@ describe("useDraggable", () => {
       new window.MouseEvent("touchmove", {
         clientX: startPos.clientX + dragDistance,
         clientY: startPos.clientY,
-      })
+      }),
     )
     await nextTick()
     expect(inner.text()).toEqual(activeText)
@@ -209,7 +207,7 @@ describe("useDraggable", () => {
     expect(inner.text()).toEqual(inactiveText)
 
     outer.element.dispatchEvent(
-      new window.MouseEvent("mousedown", { ...startPos })
+      new window.MouseEvent("mousedown", { ...startPos }),
     )
     await nextTick()
 
@@ -221,7 +219,7 @@ describe("useDraggable", () => {
       new window.MouseEvent("mousemove", {
         clientX: startPos.clientX + dragDistance,
         clientY: startPos.clientY,
-      })
+      }),
     )
     await nextTick()
     expect(inner.text()).toEqual(activeText)
@@ -244,12 +242,11 @@ describe("useDraggable", () => {
           _el = e.value
         }
       }),
-      { props }
+      { props },
     )
 
     const outer = wrapper.find("#outer")
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(_el).toBeDefined()
     if (!_el) {
       return
@@ -265,7 +262,7 @@ describe("useDraggable", () => {
 
     // Drag starts
     outer.element.dispatchEvent(
-      new window.MouseEvent("mousedown", { ...startPos })
+      new window.MouseEvent("mousedown", { ...startPos }),
     )
     await nextTick()
 
@@ -281,14 +278,14 @@ describe("useDraggable", () => {
       new window.MouseEvent("mousemove", {
         clientX: startPos.clientX + dragDistance,
         clientY: startPos.clientY,
-      })
+      }),
     )
     await nextTick()
 
     // Styles reflect dragging
     expect(el.style.transform).toEqual(`translateX(${dragDistance}px)`)
     expect(el.style.opacity).toEqual(
-      `${1 - Math.abs(dragDistance / removalDistance)}`
+      `${1 - Math.abs(dragDistance / removalDistance)}`,
     )
     expect(el.style.transition).toEqual("")
 
@@ -304,14 +301,14 @@ describe("useDraggable", () => {
 
     // Start again, move and end
     outer.element.dispatchEvent(
-      new window.MouseEvent("mousedown", { ...startPos })
+      new window.MouseEvent("mousedown", { ...startPos }),
     )
     await nextTick()
     window.dispatchEvent(
       new window.MouseEvent("mousemove", {
         clientX: startPos.clientX + removalDistance,
         clientY: startPos.clientY,
-      })
+      }),
     )
     await nextTick()
     window.dispatchEvent(new window.MouseEvent("mouseup"))

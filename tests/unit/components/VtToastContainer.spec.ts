@@ -112,11 +112,12 @@ describe("VtToastContainer", () => {
 
       expect(wrapper.findAllComponents(VtToast).length).toBe(1)
       expect(
-        wrapper.find(`.${POSITION.TOP_RIGHT}`).findAllComponents(VtToast).length
+        wrapper.find(`.${POSITION.TOP_RIGHT}`).findAllComponents(VtToast)
+          .length,
       ).toBe(1)
       // Test with startsWith as there is a "x" from
       expect(wrapper.findComponent(VtToast).text()).toEqual(
-        defaultToastMessage(message)
+        defaultToastMessage(message),
       )
       expect(wrapper.findComponent(VtToast).isVisible()).toBe(true)
     })
@@ -157,7 +158,7 @@ describe("VtToastContainer", () => {
       expect(wrapper.findAllComponents(VtToast).length).toBe(1)
       expect(
         wrapper.find(`.${POSITION.BOTTOM_CENTER}`).findAllComponents(VtToast)
-          .length
+          .length,
       ).toBe(1)
     })
 
@@ -286,10 +287,10 @@ describe("VtToastContainer", () => {
 
       expect(wrapper.findAllComponents(VtToast).length).toBe(2)
       expect(wrapper.find(`.${infoClass}`).text()).toEqual(
-        defaultToastMessage(infoText)
+        defaultToastMessage(infoText),
       )
       expect(wrapper.find(`.${errorClass}`).text()).toEqual(
-        defaultToastMessage(errorText)
+        defaultToastMessage(errorText),
       )
     })
 
@@ -308,7 +309,7 @@ describe("VtToastContainer", () => {
 
       expect(wrapper.findAllComponents(VtToast).length).toBe(1)
       expect(wrapper.findComponent(VtToast).text()).toEqual(
-        defaultToastMessage(showText)
+        defaultToastMessage(showText),
       )
     })
 
@@ -327,7 +328,7 @@ describe("VtToastContainer", () => {
 
       expect(wrapper.findAllComponents(VtToast).length).toBe(1)
       expect(wrapper.findComponent(VtToast).text()).toEqual(
-        defaultToastMessage(showText)
+        defaultToastMessage(showText),
       )
     })
 
@@ -465,14 +466,14 @@ describe("VtToastContainer", () => {
       await nextTick()
 
       expect(wrapper.findComponent(VtToast).text()).toBe(
-        defaultToastMessage(oldContent)
+        defaultToastMessage(oldContent),
       )
 
       toast.update(toastID, { content: newContent })
       await nextTick()
 
       expect(wrapper.findComponent(VtToast).text()).toBe(
-        defaultToastMessage(newContent)
+        defaultToastMessage(newContent),
       )
     })
 
@@ -507,7 +508,7 @@ describe("VtToastContainer", () => {
 
       expect(wrapper.findAllComponents(VtToast).length).toBe(1)
       expect(wrapper.findComponent(VtToast).text()).toEqual(
-        defaultToastMessage(content)
+        defaultToastMessage(content),
       )
 
       const newContent = "another"
@@ -516,7 +517,7 @@ describe("VtToastContainer", () => {
 
       expect(wrapper.findAllComponents(VtToast).length).toBe(1)
       expect(wrapper.findComponent(VtToast).text()).toEqual(
-        defaultToastMessage(newContent)
+        defaultToastMessage(newContent),
       )
     })
   })

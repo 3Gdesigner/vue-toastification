@@ -17,7 +17,7 @@ import type { ToastOptionsAndContent } from "../../../src/types/toast"
 
 const setData = (
   wrapper: VueWrapper<ComponentPublicInstance>,
-  override: Record<string, unknown>
+  override: Record<string, unknown>,
 ) => {
   merge(wrapper.vm, override)
 }
@@ -38,11 +38,14 @@ const mountToast = ({
 
 describe("VtToast", () => {
   const eventBus = new EventBus()
-  const eventsEmmited = Object.values(EVENTS).reduce((agg, eventName) => {
-    const handler = jest.fn()
-    eventBus.on(eventName, handler)
-    return { ...agg, [eventName]: handler }
-  }, {} as { [eventName in EVENTS]: jest.Mock })
+  const eventsEmmited = Object.values(EVENTS).reduce(
+    (agg, eventName) => {
+      const handler = jest.fn()
+      eventBus.on(eventName, handler)
+      return { ...agg, [eventName]: handler }
+    },
+    {} as { [eventName in EVENTS]: jest.Mock },
+  )
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -59,7 +62,7 @@ describe("VtToast", () => {
     it("has all default sub components", () => {
       const wrapper = mountToast({ content: "content" })
       expect(wrapper.find(`div.${VT_NAMESPACE}__toast-body`).text()).toEqual(
-        "content"
+        "content",
       )
       expect(wrapper.findComponent(VtIcon).exists()).toBeTruthy()
       expect(wrapper.findComponent(VtCloseButton).exists()).toBeTruthy()
@@ -69,7 +72,7 @@ describe("VtToast", () => {
     it("closeButton = false removes it", () => {
       const wrapper = mountToast({ content: "content", closeButton: false })
       expect(wrapper.find(`div.${VT_NAMESPACE}__toast-body`).text()).toEqual(
-        "content"
+        "content",
       )
       expect(wrapper.findComponent(VtIcon).exists()).toBeTruthy()
       expect(wrapper.findComponent(VtCloseButton).exists()).toBeFalsy()
@@ -79,7 +82,7 @@ describe("VtToast", () => {
     it("icon = false removes it", () => {
       const wrapper = mountToast({ content: "content", icon: false })
       expect(wrapper.find(`div.${VT_NAMESPACE}__toast-body`).text()).toEqual(
-        "content"
+        "content",
       )
       expect(wrapper.findComponent(VtIcon).exists()).toBeFalsy()
       expect(wrapper.findComponent(VtCloseButton).exists()).toBeTruthy()
@@ -89,7 +92,7 @@ describe("VtToast", () => {
     it("timeout = false removes progress bar", () => {
       const wrapper = mountToast({ content: "content", timeout: false })
       expect(wrapper.find(`div.${VT_NAMESPACE}__toast-body`).text()).toEqual(
-        "content"
+        "content",
       )
       expect(wrapper.findComponent(VtIcon).exists()).toBeTruthy()
       expect(wrapper.findComponent(VtCloseButton).exists()).toBeTruthy()
@@ -99,7 +102,7 @@ describe("VtToast", () => {
     it("renders custom component", () => {
       const wrapper = mountToast({ content: Simple })
       expect(
-        wrapper.find(`div.${VT_NAMESPACE}__toast-component-body`).exists()
+        wrapper.find(`div.${VT_NAMESPACE}__toast-component-body`).exists(),
       ).toBe(true)
       expect(wrapper.findComponent(Simple).exists()).toBeTruthy()
       expect(wrapper.findComponent(VtIcon).exists()).toBeTruthy()
@@ -124,14 +127,14 @@ describe("VtToast", () => {
     it("renders ltr by default", () => {
       const wrapper = mountToast()
       expect(wrapper.find(`div.${VT_NAMESPACE}__toast--rtl`).exists()).toBe(
-        false
+        false,
       )
       expect(wrapper.element).toMatchSnapshot()
     })
     it("renders rtl if set", () => {
       const wrapper = mountToast({ rtl: true })
       expect(wrapper.find(`div.${VT_NAMESPACE}__toast--rtl`).exists()).toBe(
-        true
+        true,
       )
       expect(wrapper.element).toMatchSnapshot()
     })

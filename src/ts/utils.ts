@@ -12,7 +12,7 @@ interface DictionaryLike {
   [index: string]: unknown
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 const isFunction = (value: unknown): value is Function =>
   typeof value === "function"
 
@@ -54,19 +54,19 @@ const isToastContent = (obj: unknown): obj is ToastContent =>
 const isDOMRect = (obj: unknown): obj is DOMRect =>
   isObject(obj) &&
   ["height", "width", "right", "left", "top", "bottom"].every(p =>
-    isNumber(obj[p])
+    isNumber(obj[p]),
   )
 
 const hasProp = <O, K extends PropertyKey>(
   obj: O,
-  propKey: K
+  propKey: K,
 ): obj is O & { [key in K]: unknown } =>
   (isObject(obj) || isFunction(obj)) && propKey in obj
 
 const getProp = <O, K extends PropertyKey, D>(
   obj: O,
   propKey: K,
-  fallback: D
+  fallback: D,
 ): K extends keyof O ? O[K] : D =>
   (hasProp(obj, propKey) ? obj[propKey] : fallback) as K extends keyof O
     ? O[K]
@@ -127,7 +127,7 @@ const normalizeToastComponent = (obj: ToastContent): ToastContent => {
 const isBrowser = () => typeof window !== "undefined"
 
 const asContainerProps = (
-  options: BasePluginOptions
+  options: BasePluginOptions,
 ): ToastContainerOptions => {
   const {
     position,
@@ -158,7 +158,7 @@ const asContainerProps = (
   const keys = Object.keys(containerProps) as (keyof ToastContainerOptions)[]
   keys.forEach(
     key =>
-      typeof containerProps[key] === "undefined" && delete containerProps[key]
+      typeof containerProps[key] === "undefined" && delete containerProps[key],
   )
   return containerProps
 }

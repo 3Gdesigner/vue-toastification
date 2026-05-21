@@ -4,8 +4,7 @@ import type { BaseToastOptions } from "./toast"
 import type { BaseToastContainerOptions } from "./toastContainer"
 
 export declare interface BasePluginOptions
-  extends BaseToastContainerOptions,
-    BaseToastOptions {}
+  extends BaseToastContainerOptions, BaseToastOptions {}
 
 export declare interface PluginOptions extends BasePluginOptions {
   /**
@@ -15,7 +14,7 @@ export declare interface PluginOptions extends BasePluginOptions {
    */
   onMounted?: (
     containerComponent: ComponentPublicInstance,
-    containerApp: App<Element>
+    containerApp: App<Element>,
   ) => void
   /**
    * Shares the context of your app with your toasts

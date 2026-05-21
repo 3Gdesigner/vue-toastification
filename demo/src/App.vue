@@ -10,7 +10,7 @@ import { POSITION, TYPE, useToast } from "../../src"
 
 const toast = useToast()
 
-const getRandom = <T>(list: T[]) =>
+const getRandom = <T,>(list: T[]) =>
   list[Math.floor((Math.random() * 10) % list.length)]
 
 const randomType = () => getRandom(Object.values(TYPE))

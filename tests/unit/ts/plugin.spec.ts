@@ -1,13 +1,11 @@
 import { App } from "vue"
 
-import { isFunction } from "@vue/shared"
-
 import { PluginOptions, ToastInterface, EventBus } from "../../../src"
 import * as useToast from "../../../src/ts/composables/useToast"
 import { globalEventBus } from "../../../src/ts/eventBus"
 import * as plugin from "../../../src/ts/plugin"
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 type AsFunction<T> = T extends Function ? T : never
 
 const pluginFunction = plugin.VueToastificationPlugin as AsFunction<
@@ -22,7 +20,7 @@ describe("plugin", () => {
 
   describe("VueToastificationPlugin", () => {
     it("plugin is a function", () => {
-      expect(isFunction(plugin.VueToastificationPlugin)).toBe(true)
+      expect(typeof plugin.VueToastificationPlugin).toBe("function")
     })
     it("provides default if no options", () => {
       const toast = {} as ToastInterface
@@ -41,7 +39,7 @@ describe("plugin", () => {
       })
       expect(mockApp.provide).toHaveBeenCalledWith(
         useToast.toastInjectionKey,
-        toast
+        toast,
       )
     })
 
@@ -64,7 +62,7 @@ describe("plugin", () => {
       })
       expect(mockApp.provide).toHaveBeenCalledWith(
         useToast.toastInjectionKey,
-        toast
+        toast,
       )
     })
 
@@ -87,7 +85,7 @@ describe("plugin", () => {
       })
       expect(mockApp.provide).toHaveBeenCalledWith(
         useToast.toastInjectionKey,
-        toast
+        toast,
       )
     })
 
@@ -103,7 +101,7 @@ describe("plugin", () => {
       pluginFunction(mockApp)
 
       expect(createToastInstanceSpy).not.toHaveBeenCalledWith(
-        expect.objectContaining({ shareAppContext: mockApp })
+        expect.objectContaining({ shareAppContext: mockApp }),
       )
     })
 
@@ -119,7 +117,7 @@ describe("plugin", () => {
       pluginFunction(mockApp, { shareAppContext: true })
 
       expect(createToastInstanceSpy).toHaveBeenCalledWith(
-        expect.objectContaining({ shareAppContext: mockApp })
+        expect.objectContaining({ shareAppContext: mockApp }),
       )
     })
   })

@@ -155,7 +155,7 @@ describe("useToast", () => {
       toast.success("hey")
       expect(consoleSpy).toHaveBeenCalledTimes(2)
       expect(consoleSpy).toHaveBeenCalledWith(
-        `[${VT_NAMESPACE}] This plugin does not support SSR!`
+        `[${VT_NAMESPACE}] This plugin does not support SSR!`,
       )
     })
 

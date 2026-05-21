@@ -1,5 +1,3 @@
-/* eslint-disable vue/one-component-per-file */
-
 import { computed, defineComponent, h, nextTick, reactive, ref } from "vue"
 
 import { mount } from "@vue/test-utils"
@@ -60,11 +58,11 @@ describe("useFocusable", () => {
     expect(addEventListenerSpy).toHaveBeenCalledTimes(2)
     expect(addEventListenerSpy).toHaveBeenCalledWith(
       "blur",
-      expect.any(Function)
+      expect.any(Function),
     )
     expect(addEventListenerSpy).toHaveBeenCalledWith(
       "focus",
-      expect.any(Function)
+      expect.any(Function),
     )
     expect(removeEventListenerSpy).not.toHaveBeenCalled()
 
@@ -74,11 +72,11 @@ describe("useFocusable", () => {
     expect(removeEventListenerSpy).toHaveBeenCalledTimes(2)
     expect(removeEventListenerSpy).toHaveBeenCalledWith(
       "blur",
-      expect.any(Function)
+      expect.any(Function),
     )
     expect(removeEventListenerSpy).toHaveBeenCalledWith(
       "focus",
-      expect.any(Function)
+      expect.any(Function),
     )
   })
 

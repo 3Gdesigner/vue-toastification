@@ -11,7 +11,7 @@
     "
     @leave="leave"
   >
-    <slot></slot>
+    <slot />
   </transition-group>
 </template>
 

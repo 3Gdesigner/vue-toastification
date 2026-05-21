@@ -1,10 +1,10 @@
-import type { TYPE } from "../ts/constants"
 import type { ClassNames, EventBusable } from "./common"
 import type {
   BaseToastOptions,
   ToastOptions,
   ToastOptionsAndContent,
 } from "./toast"
+import type { TYPE } from "../ts/constants"
 
 type ContainerCallback = () => HTMLElement | Promise<HTMLElement>
 
@@ -41,7 +41,7 @@ export declare interface BaseToastContainerOptions extends EventBusable {
    */
   filterBeforeCreate?: (
     toast: ToastOptionsAndContent,
-    toasts: ToastOptionsAndContent[]
+    toasts: ToastOptionsAndContent[],
   ) => ToastOptionsAndContent | false
   /**
    * Callback to filter toasts during render
@@ -57,8 +57,7 @@ export declare interface BaseToastContainerOptions extends EventBusable {
   containerClassName?: ClassNames
 }
 
-export declare interface ToastContainerOptions
-  extends BaseToastContainerOptions {
+export declare interface ToastContainerOptions extends BaseToastContainerOptions {
   defaultToastProps?: BaseToastOptions
 }
 

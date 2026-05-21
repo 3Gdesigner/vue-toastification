@@ -35,7 +35,7 @@ const style = computed(() => {
 })
 
 const cpClass = computed(() =>
-  hasClass.value ? `${VT_NAMESPACE}__progress-bar` : ""
+  hasClass.value ? `${VT_NAMESPACE}__progress-bar` : "",
 )
 
 watch(
@@ -43,7 +43,7 @@ watch(
   () => {
     hasClass.value = false
     nextTick(() => (hasClass.value = true))
-  }
+  },
 )
 
 const animationEnded = () => emit("close-toast")

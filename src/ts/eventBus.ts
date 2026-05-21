@@ -1,3 +1,4 @@
+import type { EVENTS } from "./constants"
 import type { ToastID } from "../types/common"
 import type {
   ToastOptionsAndContent,
@@ -5,7 +6,6 @@ import type {
   ToastOptions,
 } from "../types/toast"
 import type { ToastContainerOptions } from "../types/toastContainer"
-import type { EVENTS } from "./constants"
 
 import { hasProp, isFunction } from "./utils"
 

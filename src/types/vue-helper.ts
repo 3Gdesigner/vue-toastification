@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-unsafe-function-type */
 // Taken from vue's own implementation
 
 type NotUndefined<T> = T extends undefined ? never : T

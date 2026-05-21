@@ -22,7 +22,7 @@ describe("EventBus", () => {
     expect(eventBus["allHandlers"]).toEqual(
       expect.objectContaining({
         [EVENTS.DISMISS]: expect.arrayContaining([handler]),
-      })
+      }),
     )
   })
 
@@ -35,7 +35,7 @@ describe("EventBus", () => {
     eventBus.off(eventName, handler)
 
     expect(eventBus["allHandlers"]).toEqual(
-      expect.objectContaining({ [EVENTS.DISMISS]: [] })
+      expect.objectContaining({ [EVENTS.DISMISS]: [] }),
     )
   })
 
